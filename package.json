@@ -1,17 +1,17 @@
 {
-  "name": "gatsby-starter-paperbase",
+  "name": "cloud-sample-app-intranet-gatsby",
   "version": "1.0.0",
-  "description": "A Gatsby Starter for using Material UI's Paperbase premium theme.  Great for making admin tools and dashboards.",
-  "main": "index.js",
-  "repository": "https://github.com/willcode4food/gatsby-starter-paperbase",
-  "author": "Marc Arbesman marbesman@gmail.com",
+  "description": "Showcase of Kentico Cloud Intranet admin UI using Material design and Gatsby.",
+  "repository": "https://github.com/Simply007/cloud-sample-app-intranet-gatsby",
+  "author": "Ondřej Chrastina <ondrej.chrastina@gmail.com> (https://github.com/Simply007)",
   "license": "MIT",
   "private": false,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "gatsby": "^2.3.0",
+    "gatsby": "^2.14.0",
     "gatsby-plugin-material-ui": "^1.2.4",
+    "gatsby-source-kentico-cloud": "4.0.0-beta1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "typeface-merriweather": "^0.0.72",
@@ -27,11 +27,8 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "clean": "rm -rf public && rm -rf .cache",
-    "dev": "NODE_ENV=development rm -rf ./.cache && yarn && gatsby develop -H 0.0.0.0",
-    "develop": "yarn dev",
+    "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "prebuild": "yarn clean && yarn",
     "start": "yarn develop"
   }
 }

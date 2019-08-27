@@ -17,101 +17,101 @@ import { withStyles } from '@material-ui/core/styles'
 const lightColor = 'rgba(255, 255, 255, 0.7)'
 
 const styles = theme => ({
-	secondaryBar: {
-		zIndex: 0,
-	},
-	menuButton: {
-		marginLeft: -theme.spacing.unit,
-	},
-	iconButtonAvatar: {
-		padding: 4,
-	},
-	link: {
-		color: lightColor,
-		'&:hover': {
-			color: theme.palette.common.white,
-		},
-	},
-	button: {
-		borderColor: lightColor,
-	},
-	avatar: {
-		img: {
-			margin: 0,
-		},
-	},
+  secondaryBar: {
+    zIndex: 0,
+  },
+  menuButton: {
+    marginLeft: -theme.spacing.unit,
+  },
+  iconButtonAvatar: {
+    padding: 4,
+  },
+  link: {
+    color: lightColor,
+    '&:hover': {
+      color: theme.palette.common.white,
+    },
+  },
+  button: {
+    borderColor: lightColor,
+  },
+  avatar: {
+    img: {
+      margin: 0,
+    },
+  },
 })
 
 function Header({ classes, onDrawerToggle, title }) {
-	return (
-		<>
-			<AppBar color="primary" position="sticky" elevation={0}>
-				<Toolbar>
-					<Grid container spacing={8} alignItems="center">
-						<Hidden smUp>
-							<Grid item>
-								<IconButton
-									color="inherit"
-									aria-label="Open drawer"
-									onClick={onDrawerToggle}
-									className={classes.menuButton}
-								>
-									<MenuIcon />
-								</IconButton>
-							</Grid>
-						</Hidden>
-						<Grid item xs />
-						<Grid item>
-							<Typography className={classes.link} component="a" href="#">
-								Go to docs
-							</Typography>
-						</Grid>
-						<Grid item>
-							<Tooltip title="Alerts • No alters">
-								<IconButton color="inherit">
-									<NotificationsIcon />
-								</IconButton>
-							</Tooltip>
-						</Grid>
-						<Grid item>
-							<IconButton color="inherit" className={classes.iconButtonAvatar}>
-								<Avatar className={classes.avatar} src="/images/avatar.jpg" />
-							</IconButton>
-						</Grid>
-					</Grid>
-				</Toolbar>
-			</AppBar>
-			<AppBar component="div" className={classes.secondaryBar} color="primary" position="static" elevation={0}>
-				<Toolbar>
-					<Grid container alignItems="center" spacing={8}>
-						<Grid item xs>
-							<Typography style={{ textTransform: 'capitalize' }} color="inherit" variant="h5">
-								{title}
-							</Typography>
-						</Grid>
-						<Grid item>
-							<Button className={classes.button} variant="outlined" color="inherit" size="small">
-								Web setup
-							</Button>
-						</Grid>
-						<Grid item>
-							<Tooltip title="Help">
-								<IconButton color="inherit">
-									<HelpIcon />
-								</IconButton>
-							</Tooltip>
-						</Grid>
-					</Grid>
-				</Toolbar>
-			</AppBar>
-		</>
-	)
+  return (
+    <>
+      <AppBar color="primary" position="sticky" elevation={0}>
+        <Toolbar>
+          <Grid container spacing={8} alignItems="center">
+            <Hidden smUp>
+              <Grid item>
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={onDrawerToggle}
+                  className={classes.menuButton}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
+            </Hidden>
+            <Grid item xs />
+            <Grid item>
+              <Typography className={classes.link} component="a" href="#">
+                Go to docs
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Tooltip title="Alerts • No alters">
+                <IconButton color="inherit">
+                  <NotificationsIcon />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+            <Grid item>
+              <IconButton color="inherit" className={classes.iconButtonAvatar}>
+                <Avatar className={classes.avatar} src="/images/avatar.jpg" />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+      <AppBar component="div" className={classes.secondaryBar} color="primary" position="static" elevation={0}>
+        <Toolbar>
+          <Grid container alignItems="center" spacing={8}>
+            <Grid item xs>
+              <Typography style={{ textTransform: 'capitalize' }} color="inherit" variant="h5">
+                {title}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Button className={classes.button} variant="outlined" color="inherit" size="small">
+                Web setup
+              </Button>
+            </Grid>
+            <Grid item>
+              <Tooltip title="Help">
+                <IconButton color="inherit">
+                  <HelpIcon />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </>
+  )
 }
 
 Header.propTypes = {
-	classes: PropTypes.object.isRequired,
-	onDrawerToggle: PropTypes.func.isRequired,
-	title: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+  onDrawerToggle: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default withStyles(styles)(Header)

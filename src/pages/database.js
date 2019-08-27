@@ -4,14 +4,14 @@ import Layout from 'components/Layout'
 import DatabaseContent from 'components/DatabaseContent'
 
 function DatabasePage({ location }) {
-	const pageTitle = location ? location.pathname.replace(/\//g, '') : ''
-	return (
-		<Layout location={location} title={pageTitle}>
-			<DatabaseContent />
-		</Layout>
-	)
+  const pageTitle = location ? location.pathname.replace(/\//g, '') : ''
+  return (
+    <Layout location={location} title={pageTitle}>
+      <DatabaseContent />
+    </Layout>
+  )
 }
 DatabasePage.propTypes = {
-	location: PropTypes.object,
+  location: PropTypes.object,
 }
 export default DatabasePage
