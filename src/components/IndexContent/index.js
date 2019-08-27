@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
 import ContentGraphic from './ContentGraphic'
+import EmployeeList from 'components/widgets/EmployeeList'
+
 const styles = theme => ({
   paper: {
     margin: 'auto',
@@ -16,14 +18,10 @@ const styles = theme => ({
       minWidth: 936,
     },
   },
-  searchBar: {
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-  },
-  block: {
-    display: 'block',
-  },
-  addUser: {
-    marginRight: theme.spacing.unit,
+  widget: {
+    maxWidth: 936,
+    margin: 'auto',
+    overflow: 'hidden',
   },
   contentWrapper: {
     height: 368,
@@ -35,20 +33,27 @@ const styles = theme => ({
 
 function Content({ classes }) {
   return (
+    <>
     <div className={classes.container}>
       <Paper className={classes.paper}>
-        <Grid container spacing={16} className={classes.contentWrapper} wrap alignItems="center" justify="center">
+        <Grid container spacing={16} className={classes.contentWrapper} wrap="wrap" alignItems="center" justify="center">
           <Grid lg={6} xs={12} item align="center">
             <ContentGraphic />
           </Grid>
           <Grid lg={6} xs={12} item>
-            <Typography component="h2" variant="display1" color="textSecondary" align="center">
-              Welcome to your new project
+            <Typography component="h2" variant="h4" color="textSecondary" align="center">
+              Welcome!
             </Typography>
           </Grid>
         </Grid>
       </Paper>
     </div>
+    <div className={classes.container}>
+      <Paper className={classes.widget}>
+        <EmployeeList />
+      </Paper>
+    </div>
+    </>
   )
 }
 

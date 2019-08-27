@@ -62,7 +62,11 @@ function Header({ classes, onDrawerToggle, title }) {
             </Hidden>
             <Grid item xs />
             <Grid item>
-              <Typography className={classes.link} component="a" href="#">
+              <Typography
+                className={classes.link}
+                component="a"
+                href="https://docs.kenticocloud.com"
+                target="_blank">
                 Go to docs
               </Typography>
             </Grid>
@@ -74,8 +78,19 @@ function Header({ classes, onDrawerToggle, title }) {
               </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton color="inherit" className={classes.iconButtonAvatar}>
+              <IconButton
+                href="https://kenticocloud.com"
+                target={'_blank'}
+                color="inherit"
+                className={classes.iconButtonAvatar}>
                 <Avatar className={classes.avatar} src="/images/avatar.png" />
+              </IconButton>
+              <IconButton
+                href="https://github.com/Simply007/cloud-sample-app-intranet-gatsby"
+                target={'_blank'}
+                color="inherit"
+                className={classes.iconButtonAvatar}>
+                <Avatar className={classes.avatar} src="/images/github.png" />
               </IconButton>
             </Grid>
           </Grid>

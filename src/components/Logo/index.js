@@ -20,7 +20,7 @@ function Logo() {
           style={{ fill: "#f05a22", fillOpacity: 1, fillRule: "nonzero", stroke: "none" }}
           d="M 0,0 H 250 V 250 H 0 Z" /><g
             id="g14"><g
-              clip-path="url(#clipPath20)"
+              clipPath="url(#clipPath20)"
               id="g16"><g
                 transform="translate(124.995,142.8346)"
                 id="g22"><path

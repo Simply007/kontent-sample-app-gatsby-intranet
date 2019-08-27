@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import PropTypes from 'prop-types'
-import Content from 'components/Content'
+import Content from 'components/IndexContent'
 
 function DashboardIndex({ data, location }) {
   const { title } = data.site.siteMetadata

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Intranet Portal Dashboard`,
+    title: `Dashboard`,
     author: `Ondřej Chrastina`,
     description: `Showcase of Kentico Cloud Intranet admin UI using Material design and Gatsby.`,
     siteUrl: `https://cloud-sample-app-intranet-gatsby.netlify.com/`,
