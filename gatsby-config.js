@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Paperbase Dashboard`,
-    author: `Marc Arbesman`,
-    description: `A starter dashboard demonstrating Material UI's Paperbase theme in Gatsby`,
-    siteUrl: `https://gatsby-starter-paperbase-demo.netlify.com/`,
+    title: `Intranet Portal Dashboard`,
+    author: `Ondřej Chrastina`,
+    description: `Showcase of Kentico Cloud Intranet admin UI using Material design and Gatsby.`,
+    siteUrl: `https://cloud-sample-app-intranet-gatsby.netlify.com/`,
     social: {
-      twitter: `willcode4food`,
+      twitter: `ChrastinaOndrej`,
     },
   },
   plugins: [

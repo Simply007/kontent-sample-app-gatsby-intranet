@@ -75,7 +75,7 @@ function Header({ classes, onDrawerToggle, title }) {
             </Grid>
             <Grid item>
               <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar className={classes.avatar} src="/images/avatar.jpg" />
+                <Avatar className={classes.avatar} src="/images/avatar.png" />
               </IconButton>
             </Grid>
           </Grid>

@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
-import Content from 'components/Content'
+import EmployeesContent from 'components/EmployeesContent'
 
-function LabPage({ location }) {
+function EmployeesPage({ location }) {
   const pageTitle = location ? location.pathname.replace(/\//g, '') : ''
   return (
     <Layout location={location} title={pageTitle}>
-      <Content />
+      <EmployeesContent />
     </Layout>
   )
 }
-LabPage.propTypes = {
+
+EmployeesPage.propTypes = {
   location: PropTypes.object,
 }
-export default LabPage
+export default EmployeesPage
