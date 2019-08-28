@@ -2,13 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from 'components/Layout';
 import PropTypes from 'prop-types';
-import Content from 'components/IndexContent';
+import IndexContent from 'components/IndexContent';
 
 function DashboardIndex({ data, location }) {
   const { title } = data.site.siteMetadata;
   return (
     <Layout location={location} title={title}>
-      <Content />
+      <IndexContent />
     </Layout>
   );
 }
