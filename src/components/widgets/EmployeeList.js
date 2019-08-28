@@ -32,9 +32,9 @@ function EmployeeList() {
                 date_of_birth {
                   value(formatString: "YYYY")
                 }
-              }
-              fields {
-                slug
+                urlslug {
+                  value
+                }
               }
             }
           }
@@ -46,7 +46,7 @@ function EmployeeList() {
             person.elements.name.value,
             person.elements.surname.value,
             person.elements.date_of_birth.value,
-            person.fields.slug
+            person.elements.urlslug.value
           )
         );
         return (

@@ -15,7 +15,6 @@
     "html-react-parser": "^0.9.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "remove-accents": "^0.4.2",
     "typeface-merriweather": "^0.0.72",
     "typeface-montserrat": "^0.0.54",
     "typography": "^0.16.19"

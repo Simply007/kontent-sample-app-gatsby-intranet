@@ -1,5 +1,4 @@
 const path = require('path')
-const accents = require('remove-accents')
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
   // enable sourcemaps on dev
@@ -7,7 +6,7 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
   if (stage === 'develop') {
     actions.setWebpackConfig({
       devtool: 'cheap-module-source-map',
-    })
+    });
   }
 
   actions.setWebpackConfig({
@@ -23,15 +22,14 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
   if (node.internal.type === 'KenticoCloudItemPerson') {
-    const name = node.elements.name.value.toLowerCase();
-    const surname = node.elements.surname.value.toLowerCase();
+    const hasNotes = node.elements.pinned_notes.value.length > 0;
     createNodeField({
       node,
-      name: `slug`,
-      value: accents.remove(`${name}-${surname}`)
+      name: `hasNotes`,
+      value: hasNotes,
     });
   }
-}
+};
 
 exports.createPages = ({ graphql, actions: { createPage } }) => {
   return new Promise((resolve, _reject) => {
@@ -39,18 +37,20 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
     query peoplePortalList {
       allKenticoCloudItemPerson(filter: {elements: {list_in_portal: {value: {elemMatch: {codename: {eq: "yes"}}}}}}) {
         nodes {
-          fields {
-            slug
+          elements {
+            urlslug {
+              value
+            }
           }
         }
       }
     }`).then(({ data: { allKenticoCloudItemPerson: { nodes } } }) => {
       for (const person of nodes) {
         createPage({
-          path: `employees/${person.fields.slug}`,
+          path: `employees/${person.elements.urlslug.value}`,
           component: path.resolve(`./src/templates/person.js`),
           context: {
-            slug: person.fields.slug,
+            slug: person.elements.urlslug.value,
           },
         });
       }

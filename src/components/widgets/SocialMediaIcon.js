@@ -4,7 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 
 function SocialMediaIcon({ icon, url }) {
-  console.log(icon);
   return (
     <IconButton href={url} target={'_blank'} color="inherit">
       <Avatar src={icon.url} alt={icon.description ? icon.description : icon.name} />

@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from 'components/Layout';
 import RichTextElement from 'components/widgets/RichTextElement';
 import SocialMediaAccount from 'components/widgets/SocialMediaAccount';
 import get from 'lodash/get';
-
 
 function Person({ location, data: { kenticoCloudItemPerson } }) {
   const fullName = `${kenticoCloudItemPerson.elements.name.value} ${kenticoCloudItemPerson.elements.surname.value}`;
@@ -24,7 +24,23 @@ function Person({ location, data: { kenticoCloudItemPerson } }) {
               return null;
             }
           }
-        }} />
+        }}
+        images={bio.images}
+        resolveImage={image => (
+          <img src={image.url} alt={image.description ? image.description : image.name} width="200" />
+        )}
+        links={bio.links}
+        resolveLink={(link, domNode) => {
+          switch (get(link, 'type')) {
+            case 'person': {
+              return <Link to={`/employees/${link.urlSlug}`}>{get(domNode, 'children[0].data', 'broken-link')}</Link>;
+            }
+            default: {
+              return null;
+            }
+          }
+        }}
+      />
     </Layout>
   );
 }
@@ -33,7 +49,7 @@ export default Person;
 
 export const query = graphql`
 query personQuery($slug: String!) {
-  kenticoCloudItemPerson(elements: {list_in_portal: {value: {elemMatch: {codename: {eq: "yes"}}}}}, fields: {slug: {eq: $slug}}) {
+  kenticoCloudItemPerson(elements: {list_in_portal: {value: {elemMatch: {codename: {eq: "yes"}}}} urlslug: { value :{eq: $slug}}}) {
     elements {
       name {
         value
