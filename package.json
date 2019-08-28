@@ -12,6 +12,7 @@
     "gatsby": "^2.14.0",
     "gatsby-plugin-material-ui": "^1.2.4",
     "gatsby-source-kentico-cloud": "4.0.0-beta1",
+    "html-react-parser": "^0.9.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "remove-accents": "^0.4.2",
