@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import EmployeeList from 'components/widgets/EmployeeList'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import EmployeeList from 'components/widgets/EmployeeList';
 
 const styles = () => ({
   paper: {
@@ -16,7 +16,7 @@ const styles = () => ({
   container: {
     padding: '48px 36px 0',
   },
-})
+});
 function EmployeesContent({ classes }) {
   return (
     <div className={classes.container}>
@@ -24,11 +24,11 @@ function EmployeesContent({ classes }) {
         <EmployeeList />
       </Paper>
     </div>
-  )
+  );
 }
 
 EmployeesContent.propTypes = {
   classes: PropTypes.object.isRequired,
-}
+};
 
-export default withStyles(styles)(EmployeesContent)
+export default withStyles(styles)(EmployeesContent);

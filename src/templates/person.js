@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Layout from 'components/Layout'
-import RichTextElement from "components/widgets/RichTextElement";
-
+import Layout from 'components/Layout';
+import RichTextElement from 'components/widgets/RichTextElement';
+import SocialMediaAccount from 'components/widgets/SocialMediaAccount';
+import get from 'lodash/get';
 
 
 function Person({ location, data: { kenticoCloudItemPerson } }) {
@@ -13,14 +14,22 @@ function Person({ location, data: { kenticoCloudItemPerson } }) {
     <Layout location={location} title={fullName}>
       <RichTextElement
         value={bio.value}
-        contentItems={bio.linked_items}
-      />
+        linkedItems={bio.linked_items}
+        resolveContentItem={linkedItem => {
+          switch (get(linkedItem, 'system.type')) {
+            case 'social_media_account': {
+              return <SocialMediaAccount item={linkedItem} />;
+            }
+            default: {
+              return null;
+            }
+          }
+        }} />
     </Layout>
   );
-};
+}
 
 export default Person;
-
 
 export const query = graphql`
 query personQuery($slug: String!) {
@@ -50,6 +59,7 @@ query personQuery($slug: String!) {
               system {
                 id
                 codename
+                type
               }
               elements {
                 handle {
@@ -66,6 +76,12 @@ query personQuery($slug: String!) {
                         elements {
                           title {
                             value
+                          }
+                          icon {
+                            value {
+                              name
+                              url
+                            }
                           }
                         }
                       }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function ContentGraphic() {
   return (
@@ -215,7 +215,7 @@ function ContentGraphic() {
         <use xlinkHref="#O" fillOpacity="0" stroke="#000" strokeOpacity="0" />
       </g>
     </svg>
-  )
+  );
 }
 
-export default ContentGraphic
+export default ContentGraphic;

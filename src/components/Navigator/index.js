@@ -1,26 +1,24 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { withStyles } from '@material-ui/core/styles'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import Grid from '@material-ui/core/Grid'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import HomeIcon from '@material-ui/icons/Home'
-import PeopleIcon from '@material-ui/icons/People'
-import Logo from 'components/Logo'
+import React from 'react';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import HomeIcon from '@material-ui/icons/Home';
+import PeopleIcon from '@material-ui/icons/People';
+import Logo from 'components/Logo';
 const categories = [
   {
     id: 'People',
-    children: [
-      { id: 'Employees', icon: <PeopleIcon />, page: 'employees' },
-    ],
+    children: [{ id: 'Employees', icon: <PeopleIcon />, page: 'employees' }],
   },
-]
+];
 
 const styles = theme => ({
   categoryHeader: {
@@ -64,10 +62,10 @@ const styles = theme => ({
   divider: {
     marginTop: theme.spacing.unit * 2,
   },
-})
+});
 
 function Navigator({ classes, location = null, ...rest }) {
-  const matchPath = location ? location.pathname.replace(/\//g, '') : null
+  const matchPath = location ? location.pathname.replace(/\//g, '') : null;
   return (
     <Drawer variant="permanent" {...rest}>
       <List disablePadding>
@@ -130,19 +128,19 @@ function Navigator({ classes, location = null, ...rest }) {
                 </Link>
               ) : (
                 <div />
-              )
+              );
             })}
             <Divider className={classes.divider} />
           </React.Fragment>
         ))}
       </List>
     </Drawer>
-  )
+  );
 }
 
 Navigator.propTypes = {
   classes: PropTypes.object.isRequired,
   location: PropTypes.object,
-}
+};
 
-export default withStyles(styles)(Navigator)
+export default withStyles(styles)(Navigator);

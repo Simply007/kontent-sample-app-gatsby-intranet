@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Hidden from '@material-ui/core/Hidden'
-import Navigator from 'components/Navigator'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Hidden from '@material-ui/core/Hidden';
+import Navigator from 'components/Navigator';
 
-import Header from 'components/Header'
+import Header from 'components/Header';
 
 let theme = createMuiTheme({
   typography: {
@@ -26,7 +26,7 @@ let theme = createMuiTheme({
   shape: {
     borderRadius: 8,
   },
-})
+});
 
 theme = {
   ...theme,
@@ -121,9 +121,9 @@ theme = {
       minHeight: 48,
     },
   },
-}
+};
 
-const drawerWidth = 256
+const drawerWidth = 256;
 
 const styles = {
   root: {
@@ -145,11 +145,11 @@ const styles = {
     flex: 1,
     padding: '0px',
   },
-}
+};
 
 function Layout({ location, title, children, classes }) {
   // eslint-disable-next-line no-undef
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -174,7 +174,7 @@ function Layout({ location, title, children, classes }) {
         </div>
       </div>
     </MuiThemeProvider>
-  )
+  );
 }
 
 Layout.propTypes = {
@@ -182,5 +182,5 @@ Layout.propTypes = {
   location: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.object,
-}
-export default withStyles(styles)(Layout)
+};
+export default withStyles(styles)(Layout);
