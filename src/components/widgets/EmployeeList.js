@@ -1,13 +1,12 @@
 import React from 'react';
+import { navigate } from '@reach/router';
 import { Link } from 'gatsby';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
 import { StaticQuery, graphql } from 'gatsby';
-import Visibility from '@material-ui/icons/Visibility';
 
 function createData(name, surname, birthYear, urlSlug) {
   return { name, surname, birthYear, urlSlug };
@@ -56,24 +55,20 @@ function EmployeeList() {
                 <TableCell>Name</TableCell>
                 <TableCell align="right">Surname</TableCell>
                 <TableCell align="right">Birth Year</TableCell>
-                <TableCell align="right">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map(row => (
-                <TableRow key={row.name}>
+                <TableRow
+                  key={row.name}
+                  onClick={() => navigate(`/employees/${row.urlSlug}`)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
                   <TableCell align="right">{row.surname}</TableCell>
                   <TableCell align="right">{row.birthYear}</TableCell>
-                  <TableCell align="right">
-                    <Link to={`/employees/${row.urlSlug}`}>
-                      <IconButton>
-                        <Visibility />
-                      </IconButton>
-                    </Link>
-                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
