@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
   // enable sourcemaps on dev
@@ -17,8 +17,8 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
         '~utils': path.resolve(__dirname, 'src/utils'),
       },
     },
-  })
-}
+  });
+};
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
   if (node.internal.type === 'KenticoCloudItemPerson') {
@@ -34,17 +34,20 @@ exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
 exports.createPages = ({ graphql, actions: { createPage } }) => {
   return new Promise((resolve, _reject) => {
     graphql(`
-    query peoplePortalList {
-      allKenticoCloudItemPerson(filter: {elements: {list_in_portal: {value: {elemMatch: {codename: {eq: "yes"}}}}}}) {
-        nodes {
-          elements {
-            urlslug {
-              value
+      query peoplePortalList {
+        allKenticoCloudItemPerson(
+          filter: { elements: { list_in_portal: { value: { elemMatch: { codename: { eq: "yes" } } } } } }
+        ) {
+          nodes {
+            elements {
+              urlslug {
+                value
+              }
             }
           }
         }
       }
-    }`).then(({ data: { allKenticoCloudItemPerson: { nodes } } }) => {
+    `).then(({ data: { allKenticoCloudItemPerson: { nodes } } }) => {
       for (const person of nodes) {
         createPage({
           path: `employees/${person.elements.urlslug.value}`,
