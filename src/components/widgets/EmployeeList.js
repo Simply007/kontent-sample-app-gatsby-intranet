@@ -17,7 +17,7 @@ function EmployeeList() {
     <StaticQuery
       query={graphql`
         query peoplePortalList {
-          allKenticoCloudItemPerson(
+          allKontentItemPerson(
             filter: { elements: { list_in_portal: { value: { elemMatch: { codename: { eq: "yes" } } } } } }
           ) {
             nodes {
@@ -39,8 +39,8 @@ function EmployeeList() {
           }
         }
       `}
-      render={({ allKenticoCloudItemPerson }) => {
-        const rows = allKenticoCloudItemPerson.nodes.map(person =>
+      render={({ allKontentItemPerson }) => {
+        const rows = allKontentItemPerson.nodes.map(person =>
           createData(
             person.elements.name.value,
             person.elements.surname.value,

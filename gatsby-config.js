@@ -3,7 +3,7 @@ module.exports = {
     title: `Dashboard`,
     author: `Ondřej Chrastina`,
     description: `Showcase of Kentico Cloud Intranet admin UI using Material design and Gatsby.`,
-    siteUrl: `https://cloud-sample-app-intranet-gatsby.netlify.com/`,
+    siteUrl: `https://kontent-sample-app-gatsby-intranet.netlify.com/`,
     social: {
       twitter: `ChrastinaOndrej`,
     },
@@ -13,7 +13,7 @@ module.exports = {
       resolve: `gatsby-plugin-material-ui`,
     },
     {
-      resolve: 'gatsby-source-kentico-cloud',
+      resolve: '@kentico/gatsby-source-kontent',
       options: {
         deliveryClientConfig: {
           projectId: '65dafdc3-095a-00f6-76bb-3195d433e992',
