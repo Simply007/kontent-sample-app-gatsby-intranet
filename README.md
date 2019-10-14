@@ -1,6 +1,8 @@
 # Material UI Paperbase Starter for Gatsby with Kentico Cloud 🔥
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b65b72e0-1499-415f-83c1-69cc9579d94e/deploy-status)](https://app.netlify.com/sites/kontent-sample-app-gatsby-intranet/deploys)
+[![Live demo](https://img.shields.io/badge/-Live%20Demo-brightgreen.svg)](https://kontent-sample-app-gatsby-intranet.netlify.com)
+
 
 Create dashboards and administration tools in Gastby using [Material UI's](https://material-ui.com/) [Paperbase Premium Theme](https://github.com/mui-org/material-ui/tree/master/docs/src/pages/premium-themes/paperbase) and [Kentico Kontent](http://kontent.ai).
 
