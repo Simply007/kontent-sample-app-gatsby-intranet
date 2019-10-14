@@ -21,8 +21,8 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 };
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
-  if (node.internal.type === 'KenticoCloudItemPerson') {
-    const hasNotes = node.elements.pinned_notes.value.length > 0;
+  if (node.internal.type === 'KontentItemPerson') {
+    const hasNotes = node.elements.pinned_notes.itemCodenames.length > 0;
     createNodeField({
       node,
       name: `hasNotes`,
@@ -35,7 +35,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
   return new Promise((resolve, _reject) => {
     graphql(`
       query peoplePortalList {
-        allKenticoCloudItemPerson(
+        allKontentItemPerson(
           filter: { elements: { list_in_portal: { value: { elemMatch: { codename: { eq: "yes" } } } } } }
         ) {
           nodes {
@@ -47,7 +47,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
           }
         }
       }
-    `).then(({ data: { allKenticoCloudItemPerson: { nodes } } }) => {
+    `).then(({ data: { allKontentItemPerson: { nodes } } }) => {
       for (const person of nodes) {
         createPage({
           path: `employees/${person.elements.urlslug.value}`,

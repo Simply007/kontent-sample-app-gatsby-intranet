@@ -62,7 +62,7 @@ function Header({ classes, onDrawerToggle, title }) {
             </Hidden>
             <Grid item xs />
             <Grid item>
-              <Typography className={classes.link} component="a" href="https://docs.kenticocloud.com" target="_blank">
+              <Typography className={classes.link} component="a" href="https://docs.kontent.ai" target="_blank">
                 Go to docs
               </Typography>
             </Grid>
@@ -75,7 +75,7 @@ function Header({ classes, onDrawerToggle, title }) {
             </Grid>
             <Grid item>
               <IconButton
-                href="https://kenticocloud.com"
+                href="https://kontent.ai"
                 target={'_blank'}
                 color="inherit"
                 className={classes.iconButtonAvatar}
@@ -83,7 +83,7 @@ function Header({ classes, onDrawerToggle, title }) {
                 <Avatar className={classes.avatar} src="/images/avatar.png" />
               </IconButton>
               <IconButton
-                href="https://github.com/Simply007/cloud-sample-app-intranet-gatsby"
+                href="https://github.com/Simply007/kontent-sample-app-gatsby-intranet"
                 target={'_blank'}
                 color="inherit"
                 className={classes.iconButtonAvatar}

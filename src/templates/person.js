@@ -69,13 +69,13 @@ const resolveImage = image => (
   <img src={image.url} alt={image.description ? image.description : image.name} width="200" />
 );
 
-function Person({ location, classes, data: { kenticoCloudItemPerson } }) {
-  const fullName = `${kenticoCloudItemPerson.elements.name.value} ${kenticoCloudItemPerson.elements.surname.value}`;
-  const bio = kenticoCloudItemPerson.elements.bio;
-  const profilePicture = kenticoCloudItemPerson.elements.profile_picture.value[0];
+function Person({ location, classes, data: { kontentItemPerson } }) {
+  const fullName = `${kontentItemPerson.elements.name.value} ${kontentItemPerson.elements.surname.value}`;
+  const bio = kontentItemPerson.elements.bio;
+  const profilePicture = kontentItemPerson.elements.profile_picture.value[0];
   const notes =
-    kenticoCloudItemPerson.fields.hasNotes &&
-    kenticoCloudItemPerson.elements.pinned_notes.linked_items.map((note, index) => (
+    kontentItemPerson.fields.hasNotes &&
+    kontentItemPerson.elements.pinned_notes.linked_items.map((note, index) => (
       <ExpansionPanel key={index + 1}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -129,7 +129,7 @@ export default withStyles(styles)(Person);
 
 export const query = graphql`
   query personQuery($slug: String!) {
-    kenticoCloudItemPerson(
+    kontentItemPerson(
       elements: {
         list_in_portal: { value: { elemMatch: { codename: { eq: "yes" } } } }
         urlslug: { value: { eq: $slug } }
@@ -158,7 +158,7 @@ export const query = graphql`
         pinned_notes {
           linked_items {
             ... on Node {
-              ... on KenticoCloudItemNote {
+              ... on KontentItemNote {
                 elements {
                   title {
                     value
@@ -175,7 +175,7 @@ export const query = graphql`
           value
           linked_items {
             ... on Node {
-              ... on KenticoCloudItemSocialMediaAccount {
+              ... on KontentItemSocialMediaAccount {
                 system {
                   id
                   codename
@@ -188,7 +188,7 @@ export const query = graphql`
                   social_media {
                     linked_items {
                       ... on Node {
-                        ... on KenticoCloudItemSocialMediaType {
+                        ... on KontentItemSocialMediaType {
                           system {
                             codename
                             id
