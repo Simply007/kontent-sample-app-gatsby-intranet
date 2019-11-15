@@ -1,7 +1,7 @@
 {
   "name": "kontent-sample-app-gatsby-intranet",
   "version": "1.0.0",
-  "description": "Showcase of Kentico Cloud Intranet admin UI using Material design and Gatsby.",
+  "description": "Showcase of Kentico Kontent Intranet admin UI using Material design and Gatsby.",
   "repository": "https://github.com/Simply007/kontent-sample-app-gatsby-intranet",
   "author": "Ondřej Chrastina <ondrej.chrastina@gmail.com> (https://github.com/Simply007)",
   "license": "MIT",
