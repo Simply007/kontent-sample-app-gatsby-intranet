@@ -6,8 +6,8 @@ import EmployeesContent from 'components/EmployeesContent';
 function EmployeesPage({ location }) {
   const pageTitle = location ? location.pathname.replace(/\//g, '') : '';
   return (
-    <Layout location={location} title={pageTitle}>
-      <EmployeesContent />
+    <Layout location={location} title={pageTitle} lang="cs">
+      <EmployeesContent lang="cs" />
     </Layout>
   );
 }

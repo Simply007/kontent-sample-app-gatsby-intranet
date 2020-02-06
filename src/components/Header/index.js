@@ -13,6 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import LanguageSelector from '../LanguageSelector';
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
@@ -42,7 +43,7 @@ const styles = theme => ({
   },
 });
 
-function Header({ classes, onDrawerToggle, title }) {
+function Header({ classes, onDrawerToggle, title, lang, location = null }) {
   return (
     <>
       <AppBar color="primary" position="sticky" elevation={0}>
@@ -61,6 +62,9 @@ function Header({ classes, onDrawerToggle, title }) {
               </Grid>
             </Hidden>
             <Grid item xs />
+            <Grid item>
+              <LanguageSelector className={classes.link} location={location} lang={lang} />
+            </Grid>
             <Grid item>
               <Typography className={classes.link} component="a" href="https://docs.kontent.ai" target="_blank">
                 Go to docs

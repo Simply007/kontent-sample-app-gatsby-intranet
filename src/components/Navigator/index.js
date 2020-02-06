@@ -64,7 +64,7 @@ const styles = theme => ({
   },
 });
 
-function Navigator({ classes, location = null, ...rest }) {
+function Navigator({ classes, location = null, lang, ...rest }) {
   const matchPath = location ? location.pathname.replace(/\//g, '') : null;
   return (
     <Drawer variant="permanent" {...rest}>
@@ -78,7 +78,7 @@ function Navigator({ classes, location = null, ...rest }) {
           </Grid>
         </ListItem>
 
-        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} to={lang === 'default' ? '/' : '/' + lang + '/'}>
           <ListItem className={classNames(classes.item, classes.itemCategory)}>
             <ListItemIcon>
               <HomeIcon />
@@ -105,7 +105,11 @@ function Navigator({ classes, location = null, ...rest }) {
             </ListItem>
             {children.map(({ id: childId, icon, page = null }) => {
               return page ? (
-                <Link key={childId} style={{ textDecoration: 'none', color: 'inherit' }} to={`/${page}`}>
+                <Link
+                  key={childId}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  to={lang === 'default' ? `/${page}` : `/${lang}/${page}`}
+                >
                   <ListItem
                     button
                     dense

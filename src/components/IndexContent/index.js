@@ -31,7 +31,7 @@ const styles = theme => ({
   },
 });
 
-function Content({ classes }) {
+function Content({ classes, lang }) {
   return (
     <>
       <div className={classes.container}>
@@ -57,7 +57,7 @@ function Content({ classes }) {
       </div>
       <div className={classes.container}>
         <Paper className={classes.widget}>
-          <EmployeeList />
+          <EmployeeList lang={lang} />
         </Paper>
       </div>
     </>

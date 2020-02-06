@@ -44,20 +44,35 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
                 value
               }
             }
+            preferred_language
           }
         }
       }
-    `).then(({ data: { allKontentItemPerson: { nodes } } }) => {
-      for (const person of nodes) {
-        createPage({
-          path: `employees/${person.elements.urlslug.value}`,
-          component: path.resolve(`./src/templates/person.js`),
-          context: {
-            slug: person.elements.urlslug.value,
-          },
-        });
+    `).then(
+      ({
+        data: {
+          allKontentItemPerson: { nodes },
+        },
+      }) => {
+        for (const person of nodes) {
+          let lang = `${person.preferred_language}/`;
+          if (person.preferred_language === 'default') {
+            lang = '/';
+          }
+
+          let pagePath = `${lang}employees/${person.elements.urlslug.value}`;
+
+          createPage({
+            path: pagePath,
+            component: path.resolve(`./src/templates/person.js`),
+            context: {
+              slug: person.elements.urlslug.value,
+              lang: person.preferred_language,
+            },
+          });
+        }
+        resolve();
       }
-      resolve();
-    });
+    );
   });
 };

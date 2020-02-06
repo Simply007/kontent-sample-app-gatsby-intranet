@@ -19,7 +19,16 @@ module.exports = {
           projectId: '65dafdc3-095a-00f6-76bb-3195d433e992',
           typeResolvers: [],
         },
-        languageCodenames: ['default'],
+        languageCodenames: ['default', 'cs'],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-i18n`,
+      options: {
+        langKeyDefault: 'en',
+        langKeyForNull: 'en',
+        prefixDefault: false,
+        useLangKeyLayout: false,
       },
     },
   ],
