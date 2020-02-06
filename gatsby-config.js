@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Dashboard`,
     author: `Ondřej Chrastina`,
-    description: `Showcase of Kentico Cloud Intranet admin UI using Material design and Gatsby.`,
+    description: `Showcase of Kentico Kontent Intranet admin UI using Material design and Gatsby.`,
     siteUrl: `https://kontent-sample-app-gatsby-intranet.netlify.com/`,
     social: {
       twitter: `ChrastinaOndrej`,
