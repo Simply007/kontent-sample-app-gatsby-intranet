@@ -44,7 +44,6 @@ const styles = theme => ({
 });
 
 const resolveContentItem = linkedItem => {
-  console.log(linkedItem);
   switch (get(linkedItem, 'system.type')) {
     case 'social_media_account': {
       return <SocialMediaAccount item={linkedItem} />;
@@ -73,7 +72,6 @@ const resolveImage = image => (
 function Person({ location, classes, data: { kontentItemPerson } }) {
   const fullName = `${kontentItemPerson.elements.name.value} ${kontentItemPerson.elements.surname.value}`;
   const bio = kontentItemPerson.elements.bio;
-  console.log(bio);
   const profilePicture = kontentItemPerson.elements.profile_picture.value[0];
   const notes =
     kontentItemPerson.fields.hasNotes &&
