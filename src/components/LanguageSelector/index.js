@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 function LanguageSelector({ classes, lang, location, className }) {
   if (lang === 'en') {
     return (
-      <Link className={className} to={`/cs/${location.pathname}`}>
+      <Link className={className} to={`/cs${location.pathname}`}>
         čeština
       </Link>
     );

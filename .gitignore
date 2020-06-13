@@ -12,6 +12,7 @@ public/
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 yarn.lock
 package-lock.json
@@ -19,15 +20,6 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
 *.sublime-workspace
-
-src/data/Dispensaries\.json
-
-src/data/DispensaryReviews\.json
-
-src/data/StrainReviews\.json
-
-src/data/Strains\.json
-
-src/data/StrainsProducts\.json

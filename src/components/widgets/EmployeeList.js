@@ -48,7 +48,7 @@ function EmployeeList(props) {
               person.elements.name.value,
               person.elements.surname.value,
               person.elements.date_of_birth.value,
-              `/${props.lang}/employees/${person.elements.urlslug.value}`
+              `/${props.lang === 'en' ? '' : props.lang + '/'}employees/${person.elements.urlslug.value}`
             )
           );
         return (

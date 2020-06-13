@@ -3,9 +3,9 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from 'components/Layout';
-import RichTextElement from 'components/widgets/RichTextElement';
 import SocialMediaAccount from 'components/widgets/SocialMediaAccount';
 import get from 'lodash/get';
+import { RichTextElement } from '@kentico/gatsby-kontent-components';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -43,7 +43,8 @@ const styles = theme => ({
   },
 });
 
-const resolveContentItem = linkedItem => {
+const resolveLinkedItem = linkedItem => {
+  debugger;
   switch (get(linkedItem, 'system.type')) {
     case 'social_media_account': {
       return <SocialMediaAccount item={linkedItem} />;
@@ -54,10 +55,14 @@ const resolveContentItem = linkedItem => {
   }
 };
 
-const resolveLink = (link, domNode) => {
+const resolveLink = (language, link, domNode) => {
   switch (get(link, 'type')) {
     case 'person': {
-      return <Link to={`/employees/${link.urlSlug}`}>{get(domNode, 'children[0].data', 'broken-link')}</Link>;
+      return (
+        <Link to={`/${language === 'en' ? '' : language + '/'}employees/${link.url_slug}`}>
+          {get(domNode, 'children[0].data', 'broken-link')}
+        </Link>
+      );
     }
     default: {
       return null;
@@ -75,7 +80,7 @@ function Person({ location, classes, data: { kontentItemPerson } }) {
   const profilePicture = kontentItemPerson.elements.profile_picture.value[0];
   const notes =
     kontentItemPerson.fields.hasNotes &&
-    kontentItemPerson.elements.pinned_notes.linked_items.map((note, index) => (
+    kontentItemPerson.elements.pinned_notes.value.map((note, index) => (
       <ExpansionPanel key={index + 1}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -108,12 +113,12 @@ function Person({ location, classes, data: { kontentItemPerson } }) {
               <Paper className={classes.bio}>
                 <RichTextElement
                   value={bio.value}
-                  linkedItems={bio.linked_items}
-                  resolveContentItem={resolveContentItem}
+                  linkedItems={bio.modular_content}
+                  resolveLinkedItem={resolveLinkedItem}
                   images={bio.images}
                   resolveImage={resolveImage}
                   links={bio.links}
-                  resolveLink={resolveLink}
+                  resolveLink={resolveLink.bind(this, kontentItemPerson.preferred_language)}
                 />
               </Paper>
             </Grid>
@@ -157,16 +162,14 @@ export const query = graphql`
           }
         }
         pinned_notes {
-          linked_items {
-            ... on Node {
-              ... on KontentItemNote {
-                elements {
-                  title {
-                    value
-                  }
-                  text {
-                    value
-                  }
+          value {
+            ... on kontent_item_note {
+              elements {
+                title {
+                  value
+                }
+                text {
+                  value
                 }
               }
             }
@@ -174,36 +177,32 @@ export const query = graphql`
         }
         bio {
           value
-          linked_items {
-            ... on Node {
-              ... on KontentItemSocialMediaAccount {
-                system {
-                  id
-                  codename
-                  type
+          modular_content {
+            ... on kontent_item_social_media_account {
+              system {
+                id
+                codename
+                type
+              }
+              elements {
+                handle {
+                  value
                 }
-                elements {
-                  handle {
-                    value
-                  }
-                  social_media {
-                    linked_items {
-                      ... on Node {
-                        ... on KontentItemSocialMediaType {
-                          system {
-                            codename
-                            id
-                          }
-                          elements {
-                            title {
-                              value
-                            }
-                            icon {
-                              value {
-                                name
-                                url
-                              }
-                            }
+                social_media {
+                  value {
+                    ... on kontent_item_social_media_type {
+                      system {
+                        codename
+                        id
+                      }
+                      elements {
+                        title {
+                          value
+                        }
+                        icon {
+                          value {
+                            name
+                            url
                           }
                         }
                       }
@@ -215,12 +214,12 @@ export const query = graphql`
           }
           images {
             url
-            imageId
+            image_id
           }
           links {
             codename
-            linkId
-            urlSlug
+            link_id
+            url_slug
             type
           }
         }

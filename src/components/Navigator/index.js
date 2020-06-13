@@ -65,7 +65,6 @@ const styles = theme => ({
 });
 
 function Navigator({ classes, location = null, lang, ...rest }) {
-  debugger;
   const matchPath = location ? location.pathname.replace(/\//g, '') : null;
   return (
     <Drawer variant="permanent" {...rest}>
@@ -132,8 +131,8 @@ function Navigator({ classes, location = null, lang, ...rest }) {
                   </ListItem>
                 </Link>
               ) : (
-                <div />
-              );
+                  <div />
+                );
             })}
             <Divider className={classes.divider} />
           </React.Fragment>
