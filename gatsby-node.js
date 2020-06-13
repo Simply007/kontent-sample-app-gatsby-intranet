@@ -56,7 +56,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
       }) => {
         for (const person of nodes) {
           let lang = `${person.preferred_language}/`;
-          if (person.preferred_language === 'default') {
+          if (person.preferred_language === 'en') {
             lang = '/';
           }
 

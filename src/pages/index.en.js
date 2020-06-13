@@ -7,8 +7,8 @@ import IndexContent from 'components/IndexContent';
 function DashboardIndex({ data, location }) {
   const { title } = data.site.siteMetadata;
   return (
-    <Layout location={location} title={title} lang="default">
-      <IndexContent lang="default" />
+    <Layout location={location} title={title} lang="en">
+      <IndexContent lang="en" />
     </Layout>
   );
 }

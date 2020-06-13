@@ -19,7 +19,7 @@ module.exports = {
           projectId: '65dafdc3-095a-00f6-76bb-3195d433e992',
           typeResolvers: [],
         },
-        languageCodenames: ['default', 'cs'],
+        languageCodenames: ['en', 'cs'],
       },
     },
     {

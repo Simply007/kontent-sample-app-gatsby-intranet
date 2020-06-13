@@ -4,7 +4,7 @@ import { Location } from '@reach/router';
 import { Link } from 'gatsby';
 
 function LanguageSelector({ classes, lang, location, className }) {
-  if (lang === 'default') {
+  if (lang === 'en') {
     return (
       <Link className={className} to={`/cs/${location.pathname}`}>
         čeština
