@@ -17,11 +17,11 @@ const styles = () => ({
     padding: '48px 36px 0',
   },
 });
-function EmployeesContent({ classes }) {
+function EmployeesContent({ classes, lang }) {
   return (
     <div className={classes.container}>
       <Paper className={classes.paper}>
-        <EmployeeList />
+        <EmployeeList lang={lang} />
       </Paper>
     </div>
   );

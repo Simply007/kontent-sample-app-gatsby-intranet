@@ -12,7 +12,7 @@ function createData(name, surname, birthYear, urlSlug) {
   return { name, surname, birthYear, urlSlug };
 }
 
-function EmployeeList() {
+function EmployeeList(props) {
   return (
     <StaticQuery
       query={graphql`
@@ -35,19 +35,22 @@ function EmployeeList() {
                   value
                 }
               }
+              preferred_language
             }
           }
         }
       `}
       render={({ allKontentItemPerson }) => {
-        const rows = allKontentItemPerson.nodes.map(person =>
-          createData(
-            person.elements.name.value,
-            person.elements.surname.value,
-            person.elements.date_of_birth.value,
-            person.elements.urlslug.value
-          )
-        );
+        const rows = allKontentItemPerson.nodes
+          .filter(person => person.preferred_language === props.lang)
+          .map(person =>
+            createData(
+              person.elements.name.value,
+              person.elements.surname.value,
+              person.elements.date_of_birth.value,
+              `/${props.lang === 'en' ? '' : props.lang + '/'}employees/${person.elements.urlslug.value}`
+            )
+          );
         return (
           <Table>
             <TableHead>
@@ -59,11 +62,7 @@ function EmployeeList() {
             </TableHead>
             <TableBody>
               {rows.map(row => (
-                <TableRow
-                  key={row.name}
-                  onClick={() => navigate(`/employees/${row.urlSlug}`)}
-                  style={{ cursor: 'pointer' }}
-                >
+                <TableRow key={row.name} onClick={() => navigate(row.urlSlug)} style={{ cursor: 'pointer' }}>
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>

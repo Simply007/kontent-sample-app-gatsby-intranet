@@ -31,7 +31,7 @@ const styles = theme => ({
   },
 });
 
-function Content({ classes }) {
+function Content({ classes, lang }) {
   return (
     <>
       <div className={classes.container}>
@@ -49,7 +49,7 @@ function Content({ classes }) {
             </Grid>
             <Grid lg={6} xs={12} item>
               <Typography component="h2" variant="h4" color="textSecondary" align="center">
-                Welcome!
+                {lang === 'en' ? 'Welcome!' : 'Vítejte!'}
               </Typography>
             </Grid>
           </Grid>
@@ -57,7 +57,7 @@ function Content({ classes }) {
       </div>
       <div className={classes.container}>
         <Paper className={classes.widget}>
-          <EmployeeList />
+          <EmployeeList lang={lang} />
         </Paper>
       </div>
     </>

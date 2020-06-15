@@ -13,12 +13,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import Logo from 'components/Logo';
-const categories = [
-  {
-    id: 'People',
-    children: [{ id: 'Employees', icon: <PeopleIcon />, page: 'employees' }],
-  },
-];
+const categories = {
+  en: [
+    {
+      id: 'People',
+      children: [{ id: 'Employees', icon: <PeopleIcon />, page: 'employees' }],
+    },
+  ],
+  cs: [
+    {
+      id: 'People',
+      children: [{ id: 'Zaměstnanci', icon: <PeopleIcon />, page: 'employees' }],
+    },
+  ],
+};
 
 const styles = theme => ({
   categoryHeader: {
@@ -64,7 +72,7 @@ const styles = theme => ({
   },
 });
 
-function Navigator({ classes, location = null, ...rest }) {
+function Navigator({ classes, location = null, lang, ...rest }) {
   const matchPath = location ? location.pathname.replace(/\//g, '') : null;
   return (
     <Drawer variant="permanent" {...rest}>
@@ -78,7 +86,7 @@ function Navigator({ classes, location = null, ...rest }) {
           </Grid>
         </ListItem>
 
-        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} to={lang === 'en' ? '/' : '/' + lang + '/'}>
           <ListItem className={classNames(classes.item, classes.itemCategory)}>
             <ListItemIcon>
               <HomeIcon />
@@ -92,7 +100,7 @@ function Navigator({ classes, location = null, ...rest }) {
             </ListItemText>
           </ListItem>
         </Link>
-        {categories.map(({ id, children }) => (
+        {categories[lang].map(({ id, children }) => (
           <React.Fragment key={id}>
             <ListItem className={classes.categoryHeader}>
               <ListItemText
@@ -105,7 +113,11 @@ function Navigator({ classes, location = null, ...rest }) {
             </ListItem>
             {children.map(({ id: childId, icon, page = null }) => {
               return page ? (
-                <Link key={childId} style={{ textDecoration: 'none', color: 'inherit' }} to={`/${page}`}>
+                <Link
+                  key={childId}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  to={lang === 'en' ? `/${page}` : `/${lang}/${page}`}
+                >
                   <ListItem
                     button
                     dense
@@ -127,8 +139,8 @@ function Navigator({ classes, location = null, ...rest }) {
                   </ListItem>
                 </Link>
               ) : (
-                <div />
-              );
+                  <div />
+                );
             })}
             <Divider className={classes.divider} />
           </React.Fragment>

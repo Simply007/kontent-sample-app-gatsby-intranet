@@ -6,13 +6,22 @@
   "author": "Ondřej Chrastina <ondrej.chrastina@gmail.com> (https://github.com/Simply007)",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "yarn develop"
+  },
   "dependencies": {
-    "@kentico/gatsby-source-kontent": "^4.0.0-beta4",
+    "@kentico/gatsby-kontent-components": "^6.0.0",
+    "@kentico/gatsby-source-kontent": "^6.0.1",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
-    "gatsby": "^2.17.11",
+    "gatsby": "^2.23.3",
+    "gatsby-plugin-i18n": "^1.0.1",
     "gatsby-plugin-material-ui": "^1.2.4",
     "html-react-parser": "^0.9.1",
+    "ptz-i18n": "^1.0.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "typeface-merriweather": "^0.0.72",
@@ -20,16 +29,11 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "eslint": "^5.15.3",
     "eslint-config-react-app": "^3.0.8",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.4"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn develop"
   }
 }

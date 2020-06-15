@@ -147,7 +147,7 @@ const styles = {
   },
 };
 
-function Layout({ location, title, children, classes }) {
+function Layout({ location, title, children, classes, lang }) {
   // eslint-disable-next-line no-undef
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -162,14 +162,15 @@ function Layout({ location, title, children, classes }) {
               variant="temporary"
               open={mobileOpen}
               onClose={() => setMobileOpen(!mobileOpen)}
+              lang={lang}
             />
           </Hidden>
           <Hidden xsDown implementation="css">
-            <Navigator PaperProps={{ style: { width: drawerWidth } }} location={location} />
+            <Navigator PaperProps={{ style: { width: drawerWidth } }} location={location} lang={lang} />
           </Hidden>
         </nav>
         <div className={classes.appContent}>
-          <Header onDrawerToggle={() => setMobileOpen(!mobileOpen)} title={title} />
+          <Header onDrawerToggle={() => setMobileOpen(!mobileOpen)} title={title} location={location} lang={lang} />
           <main className={classes.mainContent}>{children}</main>
         </div>
       </div>

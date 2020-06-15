@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Dashboard`,
@@ -15,11 +17,24 @@ module.exports = {
     {
       resolve: '@kentico/gatsby-source-kontent',
       options: {
-        deliveryClientConfig: {
-          projectId: '65dafdc3-095a-00f6-76bb-3195d433e992',
-          typeResolvers: [],
-        },
-        languageCodenames: ['default'],
+        projectId: process.env.KONTENT_PROJECT_ID, // Fill in your Project ID
+        // if false used authorization key for secured API
+        usePreviewUrl:
+          process.env.KONTENT_PREVIEW_ENABLED && process.env.KONTENT_PREVIEW_ENABLED.toLowerCase() === 'true',
+        authorizationKey:
+          process.env.KONTENT_PREVIEW_ENABLED && process.env.KONTENT_PREVIEW_ENABLED.toLowerCase() === 'true'
+            ? process.env.KONTENT_PREVIEW_KEY
+            : undefined,
+        languageCodenames: process.env.KONTENT_LANGUAGE_CODENAMES.split(',').map(lang => lang.trim()),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-i18n`,
+      options: {
+        langKeyDefault: 'en',
+        langKeyForNull: 'en',
+        prefixDefault: false,
+        useLangKeyLayout: false,
       },
     },
   ],

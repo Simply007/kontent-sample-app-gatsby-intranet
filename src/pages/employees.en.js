@@ -4,10 +4,9 @@ import Layout from 'components/Layout';
 import EmployeesContent from 'components/EmployeesContent';
 
 function EmployeesPage({ location }) {
-  const pageTitle = location ? location.pathname.replace(/\//g, '') : '';
   return (
-    <Layout location={location} title={pageTitle}>
-      <EmployeesContent />
+    <Layout location={location} title="Employees" lang="en">
+      <EmployeesContent lang="en" />
     </Layout>
   );
 }
