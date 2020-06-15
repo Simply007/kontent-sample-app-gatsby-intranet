@@ -49,7 +49,7 @@ function Content({ classes, lang }) {
             </Grid>
             <Grid lg={6} xs={12} item>
               <Typography component="h2" variant="h4" color="textSecondary" align="center">
-                Welcome!
+                {lang === 'en' ? 'Welcome!' : 'Vítejte!'}
               </Typography>
             </Grid>
           </Grid>
