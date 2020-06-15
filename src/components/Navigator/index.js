@@ -13,12 +13,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import Logo from 'components/Logo';
-const categories = [
-  {
-    id: 'People',
-    children: [{ id: 'Employees', icon: <PeopleIcon />, page: 'employees' }],
-  },
-];
+const categories = {
+  en: [
+    {
+      id: 'People',
+      children: [{ id: 'Employees', icon: <PeopleIcon />, page: 'employees' }],
+    },
+  ],
+  cs: [
+    {
+      id: 'People',
+      children: [{ id: 'Zaměstnanci', icon: <PeopleIcon />, page: 'employees' }],
+    },
+  ],
+};
 
 const styles = theme => ({
   categoryHeader: {
@@ -92,7 +100,7 @@ function Navigator({ classes, location = null, lang, ...rest }) {
             </ListItemText>
           </ListItem>
         </Link>
-        {categories.map(({ id, children }) => (
+        {categories[lang].map(({ id, children }) => (
           <React.Fragment key={id}>
             <ListItem className={classes.categoryHeader}>
               <ListItemText

@@ -63,7 +63,7 @@ function Header({ classes, onDrawerToggle, title, lang, location = null }) {
             </Hidden>
             <Grid item xs />
             <Grid item>
-              <LanguageSelector className={classes.link} location={location} lang={lang} />
+              <LanguageSelector classes={classes} className={classes.link} location={location} lang={lang} />
             </Grid>
             <Grid item>
               <Typography className={classes.link} component="a" href="https://docs.kontent.ai" target="_blank">

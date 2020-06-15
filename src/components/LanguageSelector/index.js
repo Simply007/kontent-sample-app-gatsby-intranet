@@ -1,20 +1,31 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { Location } from '@reach/router';
-import { Link } from 'gatsby';
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import { Link, navigate } from 'gatsby';
 
 function LanguageSelector({ classes, lang, location, className }) {
   if (lang === 'en') {
     return (
-      <Link className={className} to={`/cs${location.pathname}`}>
+      <Button
+        className={classes.button}
+        variant="outlined"
+        color="inherit"
+        size="small"
+        onClick={() => navigate(`/cs${location.pathname}`)}
+      >
         čeština
-      </Link>
+      </Button>
     );
   } else {
     return (
-      <Link className={className} to={location.pathname.replace('/' + lang + '/', '/')}>
+      <Button
+        className={classes.button}
+        variant="outlined"
+        color="inherit"
+        size="small"
+        onClick={() => navigate(location.pathname.replace('/' + lang + '/', '/'))}
+      >
         english
-      </Link>
+      </Button>
     );
   }
 }
