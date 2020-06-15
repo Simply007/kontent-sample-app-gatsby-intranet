@@ -5,6 +5,8 @@
 
 Create dashboards and administration tools in Gastby using [Material UI's](https://material-ui.com/) [Paperbase Premium Theme](https://github.com/mui-org/material-ui/tree/master/docs/src/pages/premium-themes/paperbase) and [Kentico Kontent](http://kontent.ai).
 
+![template preview](/template.jpg)
+
 ## 🚀 Quick start
 
 1. **Start developing.**
@@ -13,6 +15,7 @@ Create dashboards and administration tools in Gastby using [Material UI's](https
 
     ```sh
     cd kontent-sample-app-gatsby-intranet
+    npm install # in case you haven't used gatsby-cli `gatsby new` command to initialize the starter
     gatsby develop
     ```
 
